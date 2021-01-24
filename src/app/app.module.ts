@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AuthInterceptor } from './shared/services/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule} from './auth/auth.module'
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,10 @@ import  appRoutes from './routerConfig';
     MatListModule
     
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthInterceptor, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi : true
+  },],  bootstrap: [AppComponent]
 })
 export class AppModule { }
