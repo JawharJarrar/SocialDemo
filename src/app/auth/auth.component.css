@@ -1,0 +1,18 @@
+.login-page{
+    background-size:cover; width:auto;
+    height: 100%;
+    background-color: #017ee4;
+    background-position:50% 50%;
+  }
+
+  .bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  mat-card{
+    width: 100%;
+    height: auto;
+
+  }
