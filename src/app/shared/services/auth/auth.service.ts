@@ -7,7 +7,7 @@ import  { environment } from  'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
 
   private authUrl = environment.springUrl + '/auth';
 
@@ -19,4 +19,14 @@ export class AuthServiceService {
   register(user: any) {
     return this.http.post(this.authUrl + '/register', user);
   }
+  logout() {
+    localStorage.removeItem('token');
+  }
+  IsLoggedin() {
+    const token = localStorage.getItem('token');
+    if  (!token) {
+      return false;
+  }
+  return true;
+ }
 }
