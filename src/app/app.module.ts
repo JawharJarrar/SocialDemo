@@ -17,7 +17,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './shared/services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -39,13 +40,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     LayoutModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
+
     
   ],
   providers: [AuthInterceptor, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi : true
-  },],  bootstrap: [AppComponent]
+  },AuthService],  bootstrap: [AppComponent]
 })
 export class AppModule { }

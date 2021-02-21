@@ -9,7 +9,7 @@ import  { environment } from  'src/environments/environment';
 })
 export class AuthService {
 
-  private authUrl = environment.springUrl + '/auth';
+  private authUrl = environment.springUrl + 'auth';
 
   constructor(private http: HttpClient) { }
 
